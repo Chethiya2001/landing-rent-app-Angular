@@ -19,8 +19,12 @@ export class Home {
   filterdHouseLocationList: HousingLocationInfo[] = [];
 
   constructor() {
-    this.housingLocationList = this.hosingService.getAllHouseLocations();
-    this.filterdHouseLocationList = this.housingLocationList;
+    this.hosingService
+      .getAllHouseLocations()
+      .then((housingLocationList: HousingLocationInfo[]) => {
+        this.housingLocationList = housingLocationList;
+        this.filterdHouseLocationList = this.housingLocationList;
+      });
   }
   filterResults(text: string) {
     if (!text) {
@@ -28,9 +32,8 @@ export class Home {
     }
     this.filterdHouseLocationList = this.housingLocationList.filter(
       (h) =>
-      
-        h?.city.toLowerCase().includes(text.toLocaleLowerCase())||
-         h?.state.toLowerCase().includes(text.toLocaleLowerCase())
+        h?.city.toLowerCase().includes(text.toLocaleLowerCase()) ||
+        h?.state.toLowerCase().includes(text.toLocaleLowerCase())
     );
   }
 }
