@@ -1,12 +1,22 @@
-
-  <section class="max-w-md mb-5 mx-auto bg-white shadow-lg rounded-2xl overflow-hidden p-4 space-y-4">
-    <img [src]="houseLocation.photo" alt="Exterior photo of {{ houseLocation.name }}"
-      class="w-full h-64 object-cover rounded-lg" crossorigin />
-    <div class="text-center">
-      <h2 class="text-2xl font-semibold text-gray-800">{{ houseLocation.name }}</h2>
-      <p class="text-gray-500">{{ houseLocation.city }}, {{ houseLocation.state }}</p>
-      <p class="text-gray-500">{{ houseLocation.wifi ? 'WIFI Available' : 'No WIFI' }}</p>
+<div class="listings-grid">
+  <section class="listing-card">
+    <img
+      class="listing-photo"
+      [src]="houseLocation.photo"
+      alt="Exterior photo of {{ houseLocation.name }}"
+      crossorigin
+    />
+    <div class="listing-content">
+      <h2 class="listing-heading">{{ houseLocation.name }}</h2>
+      <div class="listing-location">
+        <svg class="location-icon" viewBox="0 0 24 24" width="16" height="16">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <span>{{ houseLocation.city }}, {{ houseLocation.state }}</span>
+      </div>
+      <a [routerLink]="['/details',houseLocation.id]">
+        View details
+      </a>
     </div>
   </section>
-
-
+</div>

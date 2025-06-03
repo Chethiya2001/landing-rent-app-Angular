@@ -1,11 +1,36 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Housing } from '../housing';
+import { HousingLocation } from '../housing-location/housing-location';
+import { HousingLocationInfo } from '../housinglocation';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [CommonModule,ReactiveFormsModule],
   templateUrl: './details.html',
   styleUrl: './details.css'
 })
 export class Details {
+  route: ActivatedRoute = inject(ActivatedRoute);
+  housLocationService= inject(Housing);
+  houseLocation: HousingLocationInfo | undefined;
+  applyForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+  });
 
+  constructor(){
+    const housLocationId = Number(this.route.snapshot.params['id']);
+    this.houseLocation = this.housLocationService.getHouseLocationsById(housLocationId);
+  }
+    submitApplication() {
+    this.housLocationService.submitApplication(
+      this.applyForm.value.firstName ?? '',
+      this.applyForm.value.lastName ?? '',
+      this.applyForm.value.email ?? '',
+    );
+  }
 }

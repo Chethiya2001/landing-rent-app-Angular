@@ -11,7 +11,7 @@ import { HousingLocationInfo } from '../housinglocation';
 @Component({
   selector: 'app-home',
   standalone:true,
-  imports: [Nav, Footer, CommonModule, HousingLocation],
+  imports: [CommonModule, HousingLocation],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

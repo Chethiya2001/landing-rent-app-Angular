@@ -1,1 +1,49 @@
-<p>details works!</p>
+<article class="property-card">
+    <img [src]="houseLocation?.photo" alt="Property photo" class="property-photo">
+
+    <section class="property-info">
+        <div class="property-header">
+            <h2 class="property-title">{{houseLocation?.name}}</h2>
+            <p class="property-location">
+                <svg class="location-icon" width="16" height="16" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                {{houseLocation?.state}}
+            </p>
+        </div>
+
+        <section class="property-features">
+            <h3 class="features-title">About Location</h3>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <span class="feature-label">Units Available:</span>
+                    <span class="feature-value">{{houseLocation?.availableUnits}}</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-label">Wifi Available:</span>
+                    <span class="feature-value">{{houseLocation?.wifi ? 'Yes' : 'No'}}</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-label">Laundry Available:</span>
+                    <span class="feature-value">{{houseLocation?.laundry ? 'Yes' : 'No'}}</span>
+                </li>
+            </ul>
+        </section>
+
+      
+            <section class="listing-apply">
+                <h2 class="section-heading">Apply now to live here</h2>
+                <form [formGroup]="applyForm" (submit)="submitApplication()">
+                    <label for="first-name">First Name</label>
+                    <input id="first-name" type="text" formControlName="firstName" />
+                    <label for="last-name">Last Name</label>
+                    <input id="last-name" type="text" formControlName="lastName" />
+                    <label for="email">Email</label>
+                    <input id="email" type="email" formControlName="email" />
+                    <button type="submit" class="primary">Apply now</button>
+                </form>
+            </section>
+
+    </section>
+</article>

@@ -1,4 +1,9 @@
-<app-nav></app-nav>
 
-<app-housing-location *ngFor="let locations of housingLocationList" [houseLocation]="locations"></app-housing-location>
-<app-footer></app-footer>
+<main class="home-container">
+  <div class="housing-locations-grid">
+    <app-housing-location 
+      *ngFor="let location of housingLocationList" 
+      [houseLocation]="location">
+    </app-housing-location>
+  </div>
+</main>
