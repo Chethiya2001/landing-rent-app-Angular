@@ -2,28 +2,24 @@
 
   <div class="container relative max-w-md mx-auto mt-8">
     <div class="relative">
-        <input 
-            type="search" 
-            id="default-search" 
-            #filter
-            class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-500 dark:text-gray-800"
-            placeholder="Search..." 
-            required
-        />
-        <button 
-            type="submit" 
-            (click)="filterResults(filter.value)"
-            class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700"
-        >
-            Search
-        </button>
+      <input type="search" id="default-search" #filter
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-500 dark:text-gray-800"
+        placeholder="Search..." required />
+      <button type="submit" (click)="filterResults(filter.value)"
+        class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700">
+        Search
+      </button>
     </div>
-</div>
+  </div>
 
 
   <div class="housing-locations-grid">
-
+    @defer {
     <app-housing-location *ngFor="let location of filterdHouseLocationList" [houseLocation]="location">
     </app-housing-location>
+
+    }
+
+
   </div>
 </main>
